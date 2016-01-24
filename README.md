@@ -13,6 +13,35 @@ meteor add clinical:csv
 ````
 
 ==========================
+####Parsing/Unparsing CSV
+
+See the PapaParse documentation:
+http://papaparse.com/
+
+````js
+// Parse CSV string
+var data = CSV.parse(csv);
+
+// Convert back to CSV
+var csv = CSV.unparse(data);
+
+// Parse local CSV file
+CSV.parse(file, {
+	complete: function(results) {
+		console.log("Finished:", results.data);
+	}
+});
+
+// Stream big file in worker thread
+CSV.parse(bigFile, {
+	worker: true,
+	step: function(results) {
+		console.log("Row:", results.data);
+	}
+});
+````
+
+==========================
 ####Import CSV (Server)
 
 
@@ -72,23 +101,23 @@ You can simply add options to make it simple (refer to papa docs : http://papapa
 
 Sometimes you'll want to fetch a CSV from a server-side collection.  Be careful with this, as Mongo collection can be large!
 
-**Export CSV Meteor Methods (server)**  
+**Meteor Methods that Return CSV (server)**  
 
 ```JavaScript
 Meteor.methods({
   download: function() {
-    return CSV.generate(CollectionToExtract.find().fetch());
+    return CSV.unparse(CollectionToExtract.find().fetch());
   },
   customDownload: function(){
     var collectionData = CollectionToExtract.find().fetch();
     var heading = true; // Optional, defaults to true
     var delimiter = ";" // Optional, defaults to ",";
-    return CSV.generate(collectionData, heading, delimiter);    
+    return CSV.unparse(collectionData, heading, delimiter);    
   }
 });
 ```
 
-**Fetch CSV From Server (client)**
+**Fetch CSV From Server and then Download (client)**
 
 ```JavaScript
 //events
@@ -116,24 +145,8 @@ Meteor.methods({
 ````js
 Template.fooPage.events({
   "click #downloadButton":function(){
-      var dataString = "";
-      var csvContent = "data:text/csv;charset=utf-8,\n";
-      csvContent += "timestamp, text, title\n";
-
-      Posts.find().forEach(function(record, index){
-         dataString = record.createdAt.toString() + "," +record.text.toString() + "," + record.title.toString();
-         csvContent += index < Posts.find().count() ? dataString + "\n" : dataString;
-      });
-
-      var encodedUri = encodeURI(csvContent);
-      window.open(encodedUri);
-      var encodedUri = encodeURI(csvContent);
-
-      //
-      //var link = document.createElement("a");
-      //link.setAttribute("href", encodedUri);
-      //link.setAttribute("download", "my_data.csv");
-      //link.click(); // This will download the data file named "my_data.csv".
+    var csvContent = CSV.unparse(Posts.find().fetch());
+    window.open('data:text/csv;charset=utf-8,' + escape(csvContent), '_self');
   }
 });
 ````

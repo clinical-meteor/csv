@@ -15,7 +15,7 @@ Package.onUse(function(api) {
 
   api.use('evaisse:csv@0.1.4');
 
-  api.addFiles('client/filesaver.js');
+  api.addFiles('client/filesaver.js', 'client');
   api.addFiles('csv.js');
 
   api.imply('evaisse:csv');
