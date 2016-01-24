@@ -12,7 +12,15 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.3');
+
+  api.use('evaisse:csv@0.1.4');
+
+  api.addFiles('client/filesaver.js');
   api.addFiles('csv.js');
+
+  api.imply('evaisse:csv');
+  api.export('CSV');
+  api.export('saveAs');
 });
 
 Package.onTest(function(api) {
