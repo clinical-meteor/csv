@@ -141,10 +141,10 @@ Template.fooPage.events({
 ==========================
 ####Acknowledgements
 
-https://github.com/mholt/PapaParse
-https://github.com/evaisse/meteor-csv
-https://github.com/lfergon/meteor-export-csv
-https://github.com/eligrey/FileSaver.js
+[https://github.com/mholt/PapaParse](https://github.com/mholt/PapaParse)   
+[https://github.com/evaisse/meteor-csv](https://github.com/evaisse/meteor-csv)   
+[https://github.com/lfergon/meteor-export-csv](https://github.com/lfergon/meteor-export-csv)   
+[https://github.com/eligrey/FileSaver.js](https://github.com/eligrey/FileSaver.js)   
 
 ==========================
 ####Licensing  
