@@ -2,7 +2,7 @@
 
 Utilities for importing and exporting comma separated value (CSV) files.
 
-Unit Tests: [![testing](https://travis-ci.org/evaisse/meteor-csv.svg?branch=master)](https://travis-ci.org/evaisse/meteor-csv)
+[![testing](https://travis-ci.org/evaisse/meteor-csv.svg?branch=master)](https://travis-ci.org/evaisse/meteor-csv)
 
 
 ==========================
