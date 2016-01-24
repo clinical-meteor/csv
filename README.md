@@ -1,13 +1,9 @@
 ## clinical:csv
 
-Utilities for managing and editing comma separated value (CSV) files.
+Utilities for importing and exporting comma separated value (CSV) files.
 
-[![testing](https://travis-ci.org/evaisse/meteor-csv.svg?branch=master)](https://travis-ci.org/evaisse/meteor-csv)
+Unit Tests: [![testing](https://travis-ci.org/evaisse/meteor-csv.svg?branch=master)](https://travis-ci.org/evaisse/meteor-csv)
 
-
- - Papa Parse for client side : http://papaparse.com/
- - Baby Parse for server side.
- - Usage of fibers to read csv source line by line on server side
 
 ==========================
 ####Package Installation  
@@ -18,7 +14,7 @@ meteor add clinical:csv
 
 ==========================
 ####Import CSV (Server)
-----
+
 
 Given a CSV file like the following (simple.csv)
 
@@ -73,6 +69,8 @@ You can simply add options to make it simple (refer to papa docs : http://papapa
 
 ==========================
 #### Fetch CSV From Server
+
+Sometimes you'll want to fetch a CSV from a server-side collection.  Be careful with this, as Mongo collection can be large!
 
 **Export CSV Meteor Methods (server)**  
 
