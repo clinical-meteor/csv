@@ -12,6 +12,18 @@ Unit Tests: [![testing](https://travis-ci.org/evaisse/meteor-csv.svg?branch=mast
 meteor add clinical:csv
 ````
 
+======================================
+#### Simple Export (client)
+
+````js
+Template.fooPage.events({
+  "click #downloadButton":function(){
+    var csvContent = CSV.unparse(Posts.find().fetch());
+    window.open('data:text/csv;charset=utf-8,' + escape(csvContent), '_self');
+  }
+});
+````
+
 ==========================
 ####Parsing/Unparsing CSV
 
@@ -138,18 +150,6 @@ Meteor.methods({
 
 
 
-
-======================================
-#### Manual Export (client)
-
-````js
-Template.fooPage.events({
-  "click #downloadButton":function(){
-    var csvContent = CSV.unparse(Posts.find().fetch());
-    window.open('data:text/csv;charset=utf-8,' + escape(csvContent), '_self');
-  }
-});
-````
 
 ==========================
 ####Acknowledgements
