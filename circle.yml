@@ -13,9 +13,6 @@ machine:
     NPM_PREFIX: /home/ubuntu/nvm/v0.10.33
 
 
-#general:
-#  build_dir: helloworld
-
 ## Customize dependencies
 dependencies:
   cache_directories:
