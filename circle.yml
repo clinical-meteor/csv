@@ -53,4 +53,6 @@ test:
           background: true
     - sleep 80
   override:
+    - ls -la
+    - cd helloworld && ls -la
     - cd helloworld && starrynight run-tests --type package-verification
