@@ -55,4 +55,6 @@ test:
   override:
     - ls -la
     - cd helloworld && ls -la
+    - cd helloworld/packages && ls -la
+    - cd helloworld/packages/csv/tests/gagarin && ls -la
     - cd helloworld && starrynight run-tests --type package-verification
