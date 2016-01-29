@@ -23,8 +23,7 @@ Package.onUse(function(api) {
   api.export('saveAs');
 });
 
-Package.onTest(function(api) {
+Package.onTest(function (api) {
   api.use('tinytest');
   api.use('clinical:csv');
-  api.addFiles('csv-tests.js');
 });
