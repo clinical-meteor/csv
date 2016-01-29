@@ -37,6 +37,7 @@ dependencies:
     - cd helloworld && meteor add anti:gagarin@0.4.11 session meteor-platform clinical:theming clinical:default-theme clinical:router clinical:router-default-config clinical:active-layout clinical:active-layout-reset clinical:active-layout-pagescreen-config grove:less
     - cd helloworld && git clone http://github.com/clinical-meteor/csv packages/csv
     - cd helloworld && meteor add clinical:csv
+    - cd helloworld && ls -la
     - cd helloworld && starrynight autoconfig
 
 ## Customize test commands
