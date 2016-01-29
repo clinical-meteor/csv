@@ -32,6 +32,7 @@ dependencies:
     - cd helloworld && git clone http://github.com/clinical-meteor/csv packages/csv
     - cd helloworld && meteor add clinical:csv
     - cd helloworld && ls -la
+    - cd helloworld/packages && ls -la
     - cd helloworld && starrynight autoconfig
 
 ## Customize test commands
