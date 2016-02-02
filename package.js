@@ -1,12 +1,8 @@
 Package.describe({
   name: 'clinical:csv',
   version: '0.1.0',
-  // Brief, one-line summary of the package.
   summary: 'Utilities for importing and exporting comma separated value (CSV) files.',
-  // URL to the Git repository containing the source code for this package.
   git: 'https://github.com/clinical-meteor/csv',
-  // By default, Meteor will default to using README.md for documentation.
-  // To avoid submitting documentation, set this field to null.
   documentation: 'README.md'
 });
 
