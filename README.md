@@ -151,6 +151,47 @@ Meteor.methods({
 
 
 
+====================================
+#### Select File and Parse on Client
+
+```html
+<template name="example">
+  <div id="example>
+    <button id="uploadCsv"></button>
+    <input id="hiddenUpload" class="btn hidden" type="file" value="Hidden Upload">
+  </div>
+</template>
+```
+```js
+Template.example.events({
+  'click #uploadCsv': function(){
+    $('#hiddenUpload').click();
+  },
+  'change #hiddenUpload': function(event, template){
+    var filesList = event.currentTarget.files;
+    if (filesList.length) {
+      console.log('filesList', filesList);
+
+      var file = filesList[0];
+      console.log('file', file);
+
+      if (file.type === 'text/csv') {
+        var fileReader = new FileReader();
+        fileReader.onload = function (e) {
+          var jsonRepresentationOfCsv = CSV.parse(fileReader.result);
+          console.log('jsonRepresentationOfCsv', jsonRepresentationOfCsv);
+          Session.set('uploadedData', jsonRepresentationOfCsv);
+        };
+        fileReader.onerror = function (e) {
+          throw 'Error reading CSV file';
+        };
+
+        fileReader.readAsText(file);
+      }
+    }
+  }
+})
+```
 
 ==========================
 ####Acknowledgements
