@@ -30,7 +30,7 @@ dependencies:
     # Link the meteor executable into /usr/bin
     - sudo ln -s $HOME/.meteor/meteor /usr/bin/meteor
     # Check if the helloworld directory already exists, if it doesn't, create the helloworld app
-    - if [ ! -e ${HOME}/helloworld ]; then meteor create --release METEOR@1.1.0.3 helloworld; else echo "helloworld app seems to be cached"; fi;
+    - if [ ! -e ${HOME}/helloworld ]; then meteor create --release METEOR@1.4.2.3 helloworld; else echo "helloworld app seems to be cached"; fi;
 
   override:
     - cd helloworld
