@@ -12,13 +12,13 @@
 
 /*! @source http://purl.eligrey.com/github/FileSaver.js/blob/master/FileSaver.js */
 
-var saveAs = saveAs || (function (view) {
+let saveAs = saveAs || (function (view) {
   "use strict";
   // IE <10 is explicitly unsupported
   if (typeof navigator !== "undefined" && /MSIE [1-9]\./.test(navigator.userAgent)) {
     return;
   }
-  var
+  let
     doc = view.document
     // only get URL when necessary in case Blob.js hasn't overridden it yet
     ,
@@ -28,7 +28,7 @@ var saveAs = saveAs || (function (view) {
     save_link = doc.createElementNS("http://www.w3.org/1999/xhtml", "a"),
     can_use_save_link = "download" in save_link,
     click = function (node) {
-      var event = new MouseEvent("click");
+      let event = new MouseEvent("click");
       node.dispatchEvent(event);
     },
     is_safari = /Version\/[\d\.]+.*Safari/.test(navigator.userAgent),
@@ -48,7 +48,7 @@ var saveAs = saveAs || (function (view) {
     arbitrary_revoke_timeout = 500 // in ms
     ,
     revoke = function (file) {
-      var revoker = function () {
+      let revoker = function () {
         if (typeof file === "string") { // file is an object URL
           get_URL().revokeObjectURL(file);
         } else { // file is a File
@@ -63,9 +63,9 @@ var saveAs = saveAs || (function (view) {
     },
     dispatch = function (filesaver, event_types, event) {
       event_types = [].concat(event_types);
-      var i = event_types.length;
+      let i = event_types.length;
       while (i--) {
-        var listener = filesaver["on" + event_types[i]];
+        let listener = filesaver["on" + event_types[i]];
         if (typeof listener === "function") {
           try {
             listener.call(filesaver, event || filesaver);
@@ -90,7 +90,7 @@ var saveAs = saveAs || (function (view) {
         blob = auto_bom(blob);
       }
       // First try a.download, then web filesystem, then object URLs
-      var
+      let
         filesaver = this,
         type = blob.type,
         blob_changed = false,
@@ -102,9 +102,9 @@ var saveAs = saveAs || (function (view) {
         fs_error = function () {
           if (target_view && is_safari && typeof FileReader !== "undefined") {
             // Safari doesn't allow downloading of blob urls
-            var reader = new FileReader();
+            let reader = new FileReader();
             reader.onloadend = function () {
-              var base64Data = reader.result;
+              let base64Data = reader.result;
               target_view.location.href = "data:attachment/file" + base64Data.slice(
                 base64Data.search(/[,;]/));
               filesaver.readyState = filesaver.DONE;
@@ -121,7 +121,7 @@ var saveAs = saveAs || (function (view) {
           if (target_view) {
             target_view.location.href = object_url;
           } else {
-            var new_tab = view.open(object_url, "_blank");
+            let new_tab = view.open(object_url, "_blank");
             if (new_tab == undefined && is_safari) {
               //Apple do not allow window.open, see http://bit.ly/1kZffRI
               view.location.href = object_url
@@ -185,7 +185,7 @@ var saveAs = saveAs || (function (view) {
       fs_min_size += blob.size;
       req_fs(view.TEMPORARY, fs_min_size, abortable(function (fs) {
         fs.root.getDirectory("saved", create_if_not_found, abortable(function (dir) {
-          var save = function () {
+          let save = function () {
             dir.getFile(name, create_if_not_found, abortable(function (file) {
               file.createWriter(abortable(function (writer) {
                 writer.onwriteend = function (event) {
@@ -195,7 +195,7 @@ var saveAs = saveAs || (function (view) {
                   revoke(file);
                 };
                 writer.onerror = function () {
-                  var error = writer.error;
+                  let error = writer.error;
                   if (error.code !== error.ABORT_ERR) {
                     fs_error();
                   }
@@ -244,7 +244,7 @@ var saveAs = saveAs || (function (view) {
   }
 
   FS_proto.abort = function () {
-    var filesaver = this;
+    let filesaver = this;
     filesaver.readyState = filesaver.DONE;
     dispatch(filesaver, "abort");
   };

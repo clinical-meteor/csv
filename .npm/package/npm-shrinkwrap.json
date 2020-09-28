@@ -1,0 +1,15 @@
+{
+  "lockfileVersion": 1,
+  "dependencies": {
+    "byline": {
+      "version": "4.2.1",
+      "resolved": "https://registry.npmjs.org/byline/-/byline-4.2.1.tgz",
+      "integrity": "sha1-90pm+m2P7/iLJyXgsrDPgwzfP4Y="
+    },
+    "papaparse": {
+      "version": "5.2.0",
+      "resolved": "https://registry.npmjs.org/papaparse/-/papaparse-5.2.0.tgz",
+      "integrity": "sha512-ylq1wgUSnagU+MKQtNeVqrPhZuMYBvOSL00DHycFTCxownF95gpLAk1HiHdUW77N8yxRq1qHXLdlIPyBSG9NSA=="
+    }
+  }
+}

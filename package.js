@@ -1,6 +1,6 @@
 Package.describe({
   name: 'clinical:csv',
-  version: '0.2.0',
+  version: '0.3.0',
   summary: 'Utilities for importing and exporting comma separated value (CSV) files.',
   git: 'https://github.com/clinical-meteor/csv',
   documentation: 'README.md'
@@ -8,14 +8,25 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.3');
+  api.use('ecmascript@0.13.0');
+  
+  // client
+  api.addFiles('client/exportFile.js', 'client');
+  api.addFiles('client/saveAs.js', 'client');
 
-  api.use('evaisse:csv@0.1.4');
-
-  api.addFiles('client/filesaver.js', 'client');
-  api.addFiles('csv.js');
-
-  api.imply('evaisse:csv@0.1.4');
+  // server files
+  api.addFiles('server/readCsvFileLineByLine.js', 'server');
 
   api.export('CSV');
+
+  api.export('readCsvFileLineByLine')
   api.export('saveAs');
+
+  // Don't know if we need this.  
+});
+
+
+Npm.depends({
+  "byline":"4.2.1",
+  "papaparse": "5.2.0"
 });
